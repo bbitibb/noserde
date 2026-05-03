@@ -30,8 +30,7 @@ impl FromJson for String {
                         't' => result.push('\t'),
                         'u' => {
                             let code = parse_hex4(parser)?;
-                            let ch = char::from_u32(code)
-                                .ok_or(JsonError::InvalidUnicodeEscape)?;
+                            let ch = char::from_u32(code).ok_or(JsonError::InvalidUnicodeEscape)?;
 
                             result.push(ch);
                         }

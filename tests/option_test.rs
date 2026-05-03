@@ -1,4 +1,4 @@
-use noserde::{impl_to_json, ToJson};
+use noserde::{ToJson, impl_to_json};
 
 struct UserWithAge {
     name: String,
@@ -14,10 +14,7 @@ fn serializes_some_option() {
         age: Some(20),
     };
 
-    assert_eq!(
-        user.to_json(),
-        r#"{"name":"Bob","age":20}"#
-    );
+    assert_eq!(user.to_json(), r#"{"name":"Bob","age":20}"#);
 }
 
 #[test]
@@ -27,8 +24,5 @@ fn serializes_none_option() {
         age: None,
     };
 
-    assert_eq!(
-        user.to_json(),
-        r#"{"name":"Bob","age":null}"#
-    );
+    assert_eq!(user.to_json(), r#"{"name":"Bob","age":null}"#);
 }

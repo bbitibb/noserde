@@ -1,4 +1,4 @@
-use noserde::{impl_to_json, json_struct, ToJson};
+use noserde::{ToJson, impl_to_json, json_struct};
 
 struct User {
     id: i32,
@@ -16,10 +16,7 @@ fn impl_to_json_serializes_struct() {
         active: true,
     };
 
-    assert_eq!(
-        user.to_json(),
-        r#"{"id":1,"name":"Bob","active":true}"#
-    );
+    assert_eq!(user.to_json(), r#"{"id":1,"name":"Bob","active":true}"#);
 }
 
 json_struct! {
@@ -51,16 +48,24 @@ struct Book {
     n_pages: i32,
 }
 
-impl_to_json!( Book { id, title, author, n_pages } );
+impl_to_json!(Book {
+    id,
+    title,
+    author,
+    n_pages
+});
 
 #[test]
-fn impl_to_json_book_struct(){
+fn impl_to_json_book_struct() {
     let book = Book {
         id: 69,
         title: String::from("Csipike"),
         author: String::from("Fodor Sandor"),
         n_pages: 42,
     };
-    
-    assert_eq!(book.to_json(), r#"{"id":69,"title":"Csipike","author":"Fodor Sandor","n_pages":42}"#);
+
+    assert_eq!(
+        book.to_json(),
+        r#"{"id":69,"title":"Csipike","author":"Fodor Sandor","n_pages":42}"#
+    );
 }

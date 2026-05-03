@@ -1,6 +1,12 @@
 [package]
 name = "noserde"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2024"
+description = "Small dependency-free JSON serialization/deserialization for simple Rust structs."
+readme = "README.md"
+repository = "https://github.com/bbitibb/noserde"
+license = "MIT OR Apache-2.0"
+keywords = ["json", "serialization", "deserialization", "no-deps"]
+categories = ["encoding"]
 
 [dependencies]

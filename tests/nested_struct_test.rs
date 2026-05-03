@@ -1,4 +1,4 @@
-use noserde::{impl_to_json, ToJson};
+use noserde::{ToJson, impl_to_json};
 
 struct Address {
     city: String,

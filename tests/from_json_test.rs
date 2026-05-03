@@ -1,4 +1,4 @@
-use noserde::{impl_json, json_struct, FromJson, ToJson};
+use noserde::{FromJson, ToJson, impl_json, json_struct};
 
 struct User {
     id: i32,
@@ -50,10 +50,7 @@ json_struct! {
 
 #[test]
 fn json_struct_deserializes() {
-    let product = Product::from_json(
-        r#"{"id":10,"name":"Keyboard","in_stock":false}"#
-    )
-    .unwrap();
+    let product = Product::from_json(r#"{"id":10,"name":"Keyboard","in_stock":false}"#).unwrap();
 
     assert_eq!(product.id, 10);
     assert_eq!(product.name, "Keyboard");
@@ -76,10 +73,8 @@ impl_json! {
 
 #[test]
 fn deserializes_vec_and_option() {
-    let article = Article::from_json(
-        r#"{"title":"Rust JSON","tags":["rust","json"],"views":null}"#
-    )
-    .unwrap();
+    let article =
+        Article::from_json(r#"{"title":"Rust JSON","tags":["rust","json"],"views":null}"#).unwrap();
 
     assert_eq!(article.title, "Rust JSON");
     assert_eq!(article.tags, vec!["rust".to_string(), "json".to_string()]);
